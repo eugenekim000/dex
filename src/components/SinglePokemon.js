@@ -60,7 +60,7 @@ export default function SinglePokemon(props) {
           </div>
         ))}
       </div>
-
+      <EvolutionTree id={id} />
       <Moves moves={moves} />
     </div>
   ) : (

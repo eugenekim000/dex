@@ -21,7 +21,7 @@ export default function SingleGrid(props) {
   }, []);
 
   function handleClick() {
-    dispatch({ type: "add-catch", payload: { id: id } });
+    dispatch({ type: "add-catch", payload: { name, sprite, id } });
   }
 
   return (

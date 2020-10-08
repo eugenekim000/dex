@@ -6,7 +6,13 @@ import Header from "./components/Header";
 import HomeGrid from "./components/HomeGrid";
 import SinglePokemon from "./components/SinglePokemon";
 import useStartup from "./hooks/useStartup";
-import axios from "axios";
+
+let testObj = {
+  name: "venusaur",
+  sprite:
+    "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png",
+  id: 3,
+};
 
 const ACTIONS = {
   ADD_CATCH: "add-catch",
@@ -16,9 +22,12 @@ const ACTIONS = {
 function reducer(catchList, action) {
   switch (action.type) {
     case ACTIONS.ADD_CATCH:
-      return [...catchList, action.payload.id];
+      console.log(action.payload);
+      return [...catchList, action.payload];
     case ACTIONS.DELETE_CATCH:
-      return catchList.filter((item) => item !== action.payload.id);
+      console.log(catchList, "catchlist");
+      console.log(action.payload.id, "payload id");
+      return catchList.filter((item) => item.id !== action.payload.id);
 
     default:
       return catchList;
@@ -26,7 +35,7 @@ function reducer(catchList, action) {
 }
 
 function App() {
-  const [catchList, dispatch] = useReducer(reducer, [1]);
+  const [catchList, dispatch] = useReducer(reducer, [testObj]);
   const pokemonList = useStartup();
 
   return (
