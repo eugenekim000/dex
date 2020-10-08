@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function SingleGrid(props) {
   const [sprite, setSprite] = useState("");
@@ -20,9 +21,9 @@ export default function SingleGrid(props) {
   }, []);
 
   return (
-    <>
+    <Link to={id ? `/pokemon/${id}` : "/"}>
       <img src={sprite}></img>
       <div>{name + " " + id}</div>
-    </>
+    </Link>
   );
 }
