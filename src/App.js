@@ -1,10 +1,12 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useEffect, useState } from "react";
 import { Switch, Route } from "react-router-dom";
 import "./App.css";
 import CatchList from "./components/CatchList";
 import Header from "./components/Header";
 import HomeGrid from "./components/HomeGrid";
 import SinglePokemon from "./components/SinglePokemon";
+import useStartup from "./hooks/useStartup";
+import axios from "axios";
 
 const ACTIONS = {
   ADD_CATCH: "add-catch",
@@ -16,7 +18,6 @@ function reducer(catchList, action) {
     case ACTIONS.ADD_CATCH:
       return [...catchList, action.payload.id];
     case ACTIONS.DELETE_CATCH:
-      console.log(typeof action.payload.id);
       return catchList.filter((item) => item !== action.payload.id);
 
     default:
@@ -26,6 +27,7 @@ function reducer(catchList, action) {
 
 function App() {
   const [catchList, dispatch] = useReducer(reducer, [1]);
+  const pokemonList = useStartup();
 
   return (
     <div className="App">
@@ -34,11 +36,15 @@ function App() {
         <Route
           path="/"
           exact
-          component={() => <HomeGrid dispatch={dispatch} />}
+          render={() => (
+            <HomeGrid dispatch={dispatch} pokemonList={pokemonList} />
+          )}
         />
         <Route
           path="/pokemon/:id"
-          component={() => <SinglePokemon dispatch={dispatch} />}
+          component={(props) => (
+            <SinglePokemon dispatch={dispatch} {...props} />
+          )}
         />
         <Route
           path="/catch-list"

@@ -10,7 +10,6 @@ export default function SingleGrid(props) {
   const { url, name } = props.pokemon;
 
   useEffect(() => {
-    console.log(url);
     axios
       .get(url)
       .then((res) => {
@@ -27,7 +26,7 @@ export default function SingleGrid(props) {
 
   return (
     <div>
-      <Link to={id ? `/pokemon/${id}` : "/"}>
+      <Link to={id ? `pokemon/${id}` : "/"}>
         <img src={sprite}></img>
         <div>{name + " " + id}</div>
       </Link>
