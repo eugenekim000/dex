@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Moves from "./Moves";
 
 export default function SinglePokemon(props) {
   let [fullData, setFullData] = useState("");
@@ -8,6 +9,8 @@ export default function SinglePokemon(props) {
   let [type, setType] = useState("");
   let [size, setSize] = useState({});
   const [stats, setStats] = useState([]);
+  const [moves, setMoves] = useState([]);
+
   let id = props.match.params.id;
 
   useEffect(() => {
@@ -33,6 +36,9 @@ export default function SinglePokemon(props) {
           let stats = data.stats;
           setStats(stats);
 
+          let moves = data.moves;
+          setMoves(moves);
+
           setRender(true);
         })
         .catch((error) => console.log(error));
@@ -54,6 +60,8 @@ export default function SinglePokemon(props) {
           </div>
         ))}
       </div>
+
+      <Moves moves={moves} />
     </div>
   ) : (
     <div>loading...</div>
