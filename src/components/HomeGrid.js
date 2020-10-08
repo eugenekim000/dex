@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import SingleGrid from "./SingleGrid";
 
-export default function HomeGrid() {
+export default function HomeGrid(props) {
   let [pokemons, setPokemons] = useState([]);
+  const { dispatch } = props;
 
   useEffect(() => {
     axios
@@ -20,7 +21,7 @@ export default function HomeGrid() {
   return (
     <div>
       {pokemons.map((pokemon) => (
-        <SingleGrid pokemon={pokemon} />
+        <SingleGrid pokemon={pokemon} dispatch={dispatch} />
       ))}
     </div>
   );

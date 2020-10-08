@@ -6,6 +6,7 @@ export default function SingleGrid(props) {
   const [sprite, setSprite] = useState("");
   const [id, setId] = useState(null);
 
+  const { dispatch } = props;
   const { url, name } = props.pokemon;
 
   useEffect(() => {
@@ -20,10 +21,17 @@ export default function SingleGrid(props) {
       .catch((error) => console.log(error));
   }, []);
 
+  function handleClick() {
+    dispatch({ type: "add-catch", payload: { id: id } });
+  }
+
   return (
-    <Link to={id ? `/pokemon/${id}` : "/"}>
-      <img src={sprite}></img>
-      <div>{name + " " + id}</div>
-    </Link>
+    <div>
+      <Link to={id ? `/pokemon/${id}` : "/"}>
+        <img src={sprite}></img>
+        <div>{name + " " + id}</div>
+      </Link>
+      <button onClick={handleClick}>Add to catch list</button>
+    </div>
   );
 }
