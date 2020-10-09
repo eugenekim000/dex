@@ -8,7 +8,8 @@ export const extractEvolutions = (evolutionJSON) => {
     const { trigger, min_level } = evolution_details[0];
 
     const urlArray = species.url.split("/");
-    const id = urlArray[urlArray.length - 1];
+    console.log(urlArray, "this is the url array");
+    const id = urlArray[urlArray.length - 2];
 
     obj = { ...species, trigger: trigger.name, level: min_level, id };
     result.push(obj);

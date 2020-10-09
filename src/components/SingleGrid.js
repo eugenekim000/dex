@@ -10,7 +10,7 @@ export default function SingleGrid(props) {
   const { url, name } = props.pokemon;
 
   useEffect(() => {
-    axios
+    const unsubscribe = axios
       .get(url)
       .then((res) => {
         const { data } = res;
@@ -18,6 +18,10 @@ export default function SingleGrid(props) {
         setId(data.id);
       })
       .catch((error) => console.log(error));
+
+    return () => {
+      unsubscribe();
+    };
   }, []);
 
   function handleClick() {

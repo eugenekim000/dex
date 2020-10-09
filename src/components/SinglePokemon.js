@@ -15,13 +15,13 @@ export default function SinglePokemon(props) {
   let id = props.match.params.id;
 
   useEffect(() => {
-    if (props.data) setFullData(props.data);
-    else {
-      axios
-        .get(`https://pokeapi.co/api/v2/pokemon/${id}`)
-        .then((res) => {
-          let { data } = res;
-          console.log(data);
+    let isMounted = true;
+    axios
+      .get(`https://pokeapi.co/api/v2/pokemon/${id}`)
+      .then((res) => {
+        let { data } = res;
+        console.log(data);
+        if (isMounted) {
           setFullData(data);
           setSprite(data.sprites.front_default);
 
@@ -41,9 +41,13 @@ export default function SinglePokemon(props) {
           setMoves(moves);
 
           setRender(true);
-        })
-        .catch((error) => console.log(error));
-    }
+        }
+      })
+      .catch((error) => console.log(error));
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   return render ? (
