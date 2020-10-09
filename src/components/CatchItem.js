@@ -1,8 +1,7 @@
 import "../styles/CatchItem.css";
-import React, { useState } from "react";
+import React from "react";
 
 export default function CatchItem(props) {
-  const [caught, setCaught] = useState(false);
   const { item, dispatch } = props;
 
   function handleDelete(e) {
@@ -10,12 +9,14 @@ export default function CatchItem(props) {
     dispatch({ type: "delete-catch", payload: { id } });
   }
 
-  function handleClick() {
-    setCaught((prevState) => !prevState);
+  function handleClick(e) {
+    console.log(props, "this is caught pased");
+    const id = Number(e.target.value);
+    dispatch({ type: "toggle-catch", payload: { id } });
   }
   return (
     <div className="catch-pokemon-container">
-      <img src={item.sprite} style={{ opacity: caught ? 1 : 0.3 }}></img>
+      <img src={item.sprite} style={{ opacity: item.caught ? 1 : 0.3 }}></img>
       <div
         className="
       catch-button-container"
@@ -23,7 +24,9 @@ export default function CatchItem(props) {
         <button value={item.id} onClick={handleDelete}>
           Delete
         </button>
-        <button onClick={handleClick}>Caught</button>
+        <button value={item.id} onClick={handleClick}>
+          Caught
+        </button>
       </div>
     </div>
   );
