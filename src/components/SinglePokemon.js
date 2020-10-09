@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Moves from "./Moves";
+import EvolutionTree from "./EvolutionTree";
 
 export default function SinglePokemon(props) {
   let [fullData, setFullData] = useState("");
