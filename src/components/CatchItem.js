@@ -1,9 +1,14 @@
 import "../styles/CatchItem.css";
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
+import CatchList from "./CatchList";
 
-export default function CatchItem(props) {
+const CatchItem = React.memo((props) => {
   const { item, dispatch } = props;
+
+  useEffect(() => {
+    console.log("render");
+  }, []);
 
   function handleDelete(e) {
     const id = Number(e.target.value);
@@ -39,9 +44,11 @@ export default function CatchItem(props) {
       </div>
     </div>
   );
-}
+});
 
 const variants = {
-  true: { opacity: 1 },
-  false: { opacity: 0.3 },
+  false: { opacity: 1 },
+  true: { opacity: 0.3 },
 };
+
+export default CatchItem;

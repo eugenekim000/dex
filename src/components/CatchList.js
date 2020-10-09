@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import CatchItem from "./CatchItem";
 import "../styles/CatchList.css";
 
