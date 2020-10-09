@@ -1,3 +1,4 @@
+import "../styles/CatchItem.css";
 import React, { useState } from "react";
 
 export default function CatchItem(props) {
@@ -13,12 +14,17 @@ export default function CatchItem(props) {
     setCaught((prevState) => !prevState);
   }
   return (
-    <div>
+    <div className="catch-pokemon-container">
       <img src={item.sprite} style={{ opacity: caught ? 1 : 0.3 }}></img>
-      <button value={item.id} onClick={handleDelete}>
-        Delete
-      </button>
-      <button onClick={handleClick}>Caught</button>
+      <div
+        className="
+      catch-button-container"
+      >
+        <button value={item.id} onClick={handleDelete}>
+          Delete
+        </button>
+        <button onClick={handleClick}>Caught</button>
+      </div>
     </div>
   );
 }

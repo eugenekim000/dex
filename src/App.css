@@ -1,5 +1,13 @@
+html,
+body,
+body > div,
 .App {
-  height: 100vh;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(255, 48, 48);
+}
+
+.App {
   width: auto;
   text-align: center;
   background-color: rgb(255, 48, 48);

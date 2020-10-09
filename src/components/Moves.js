@@ -1,3 +1,4 @@
+import "../styles/Moves.css";
 import React, { useEffect, useState } from "react";
 import MovesTable from "./MovesTable";
 
@@ -46,12 +47,14 @@ export default function Moves(props) {
 
   return (
     <div>
-      <button onClick={handleClick} value="level-up">
-        Level up
-      </button>
-      <button onClick={handleClick} value="machine">
-        HM/TM
-      </button>
+      <div className="moves-button-container">
+        <button onClick={handleClick} value="level-up">
+          Level up
+        </button>
+        <button onClick={handleClick} value="machine">
+          HM/TM
+        </button>
+      </div>
 
       <div>
         <MovesTable filteredMoveList={filteredMoveList} />

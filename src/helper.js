@@ -21,10 +21,15 @@ export const extractEvolutions = (evolutionJSON) => {
     result.push(obj);
     evolutionChain = evolutionChain.evolves_to[0];
   }
-  let finalEvolution = { ...evolutionChain.species, trigger: false };
   const urlArray = evolutionChain.species.url.split("/");
-  const id = urlArray[urlArray.length - 1];
-  result = [...result, finalEvolution, id];
+  const id = urlArray[urlArray.length - 2];
+  let finalEvolution = {
+    ...evolutionChain.species,
+    trigger: false,
+    id,
+    level: null,
+  };
+  result = [...result, finalEvolution];
 
   return result;
 };

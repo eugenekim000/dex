@@ -60,6 +60,8 @@ function App() {
             <CatchList catchList={catchList} dispatch={dispatch} />
           )}
         />
+
+        <Route component={pokemonList} />
       </Switch>
     </div>
   );

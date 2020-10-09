@@ -1,0 +1,9 @@
+.single-evolution-container {
+  display: flex;
+}
+
+.single-evolution-method {
+  text-align: center;
+  font-size: larger;
+  margin: auto 10px auto 10px;
+}

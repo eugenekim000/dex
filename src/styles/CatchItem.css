@@ -1,0 +1,13 @@
+.catch-pokemon-container {
+  background-color: lightcyan;
+  width: 70%;
+  text-align: center;
+  margin: auto;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.catch-button-container button {
+  margin-left: 10px;
+  border-radius: 2px;
+}

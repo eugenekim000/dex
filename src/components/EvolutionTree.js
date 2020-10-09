@@ -1,3 +1,4 @@
+import "../styles/EvolutionTree.css";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { extractEvolutions } from "../helper";
@@ -9,7 +10,6 @@ export default function EvolutionTree(props) {
   const [render, setRender] = useState(false);
 
   useEffect(() => {
-    console.log("evolution tree mounted", id);
     let isMounted = true;
     axios
       .get(`https://pokeapi.co/api/v2/pokemon-species/${id}/`)
@@ -27,14 +27,14 @@ export default function EvolutionTree(props) {
         });
       })
       .catch((error) => console.log(error));
-
+    console.log(evolutionChain, "this is the evolution chain");
     return () => {
       isMounted = false;
     };
   }, []);
 
   return (
-    <div>
+    <div className="evolution-container">
       {render ? (
         evolutionChain.map((evolution) => <Evolution evolution={evolution} />)
       ) : (
