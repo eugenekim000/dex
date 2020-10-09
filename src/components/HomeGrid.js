@@ -1,3 +1,4 @@
+import "../styles/HomeGrid.css";
 import React, { useState, useEffect } from "react";
 import SingleGrid from "./SingleGrid";
 
@@ -9,7 +10,7 @@ const HomeGrid = (props) => {
   }, []);
 
   return (
-    <div>
+    <div className="grid-container">
       {pokemonList.map((pokemon) => (
         <SingleGrid pokemon={pokemon} dispatch={dispatch} />
       ))}

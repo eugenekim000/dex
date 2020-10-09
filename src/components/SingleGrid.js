@@ -1,3 +1,4 @@
+import "../styles/SingleGrid.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -32,7 +33,7 @@ export default function SingleGrid(props) {
   }
 
   return (
-    <div>
+    <div className="single-grid-container">
       <Link to={id ? `pokemon/${id}` : "/"}>
         <img src={sprite}></img>
         <div>{name + " " + id}</div>
