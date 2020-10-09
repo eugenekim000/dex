@@ -1,8 +1,16 @@
 .move-table-container table {
   width: 100%;
   margin-top: 20px;
+  padding-bottom: 40px;
 }
 
 .table-row-container td {
   border-bottom: 1px solid lightcyan;
+}
+
+@media (max-width: 600px) {
+  .move-table-container table {
+    width: 80%;
+    margin: auto;
+  }
 }

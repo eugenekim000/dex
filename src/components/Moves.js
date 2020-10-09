@@ -4,6 +4,7 @@ import MovesTable from "./MovesTable";
 
 export default function Moves(props) {
   const { moves } = props;
+  const [render, setRender] = useState(false);
   const [moveList, setMoveList] = useState([]);
   const [filteredMoveList, setFilteredMoveList] = useState([]);
   const [toggleMethods, setToggleMethods] = useState("level-up");
@@ -29,9 +30,8 @@ export default function Moves(props) {
       }
     }
 
-    console.log(selectedMoves, "selected moves");
-
     setMoveList(selectedMoves);
+    setRender(true);
   }, []);
 
   useEffect(() => {
@@ -40,9 +40,16 @@ export default function Moves(props) {
     setFilteredMoveList(filteredList);
   }, [toggleMethods, moveList]);
 
+  useEffect(() => {
+    setRender(true);
+  }, [filteredMoveList]);
+
   function handleClick(e) {
     let filterMethod = e.target.value;
-    setToggleMethods(filterMethod);
+    if (filterMethod !== toggleMethods) {
+      setRender(false);
+      setToggleMethods(filterMethod);
+    }
   }
 
   return (
@@ -55,10 +62,13 @@ export default function Moves(props) {
           HM/TM
         </button>
       </div>
-
-      <div>
-        <MovesTable filteredMoveList={filteredMoveList} />
-      </div>
+      {render ? (
+        <div>
+          <MovesTable filteredMoveList={filteredMoveList} />
+        </div>
+      ) : (
+        <div> loading... </div>
+      )}
     </div>
   );
 }

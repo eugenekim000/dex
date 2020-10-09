@@ -7,7 +7,7 @@ export default function useStartup() {
   useEffect(() => {
     if (pokemons.length === 0) {
       axios
-        .get(`https://pokeapi.co/api/v2/pokemon`)
+        .get(`https://pokeapi.co/api/v2/pokemon?limit=151`)
         .then((res) => {
           const allPokemon = res.data.results;
           setPokemons(allPokemon);

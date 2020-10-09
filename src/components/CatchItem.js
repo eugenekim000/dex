@@ -14,9 +14,13 @@ export default function CatchItem(props) {
     const id = Number(e.target.value);
     dispatch({ type: "toggle-catch", payload: { id } });
   }
+
   return (
     <div className="catch-pokemon-container">
-      <img src={item.sprite} style={{ opacity: item.caught ? 1 : 0.3 }}></img>
+      <img
+        src={item.sprite}
+        className={item.caught ? "caught" : "not-caught"}
+      ></img>
       <div
         className="
       catch-button-container"

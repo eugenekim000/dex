@@ -10,4 +10,24 @@
 .catch-button-container button {
   margin-left: 10px;
   border-radius: 2px;
+  padding: 5px 10px 5px 10px;
+  border-radius: 5px;
+}
+
+.catch-pokemon-container img {
+  -webkit-transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  -ms-transition: opacity 1s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
+}
+
+.caught {
+  filter: alpha(opacity=50);
+  opacity: 1;
+}
+
+.not-caught {
+  filter: alpha(opacity=50);
+  opacity: 0.5;
 }

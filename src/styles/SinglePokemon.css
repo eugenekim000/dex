@@ -7,7 +7,6 @@
 
 .pokedex-data-container img {
   transform: scale(2);
-
   align-items: center;
 }
 
@@ -18,18 +17,93 @@
   border-radius: 10px;
 }
 
+.stat-type-rating-container {
+  width: auto;
+  height: 100%;
+  overflow: hidden;
+}
+
 .stats-container > div {
   margin: 10px 0px 10px 0px;
 }
 
+.stats-container {
+  background: lightcyan;
+  padding: 10px 40px 10px 40px;
+  border-radius: 10px;
+  width: 50%;
+}
+
 .stat-point-container > div {
-  margin: 10px 0px 10px 0px;
+  padding: 10px 20px 10px 20px;
+}
+.stat-type-title {
+  float: left;
+  background-color: lightcyan;
+  padding-right: 10px;
+  width: 140px;
+}
+
+.stat-type-rating {
+  float: left;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.hp {
+  background-color: lightcoral;
+}
+
+.attack {
+  background-color: lightgreen;
+}
+
+.defense {
+  background-color: lightseagreen;
+}
+
+.special-attack {
+  background-color: lightblue;
+}
+
+.special-defense {
+  background-color: lightgreen;
+}
+
+.speed {
+  background-color: lightsalmon;
+}
+
+@media (max-width: 800px) {
+  .pokedex-data-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .stats-container {
+    margin-top: 20px;
+    padding: 5px 0px 5px 0px;
+    width: 100%;
+  }
 }
 
 @media (max-width: 600px) {
   .single-sprite-container {
     padding: 50px 50px 50px 50px;
     border: 30px solid lightcyan;
+  }
+  .pokedex-data-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stats-container {
+    margin-top: 20px;
+    padding: 5px 0px 5px 0px;
+    width: 100%;
+  }
+
+  .stat-type-title {
+    padding-left: 10px;
   }
 }
 

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { ReactComponent as BookmarkLogo } from "../assets/bookmark.svg";
+import { capitalize } from "../helper";
 
 export default function SingleGrid(props) {
   const [sprite, setSprite] = useState("");
@@ -42,7 +43,7 @@ export default function SingleGrid(props) {
         <div className="single-pokemon-container">
           <img src={sprite}></img>
         </div>
-        <div>{name + " " + id}</div>
+        <div>{capitalize(name) + " " + id}</div>
       </Link>
       <div className="bookmark-container">
         <BookmarkLogo onClick={handleClick} />

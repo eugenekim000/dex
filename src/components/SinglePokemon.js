@@ -6,13 +6,14 @@ import EvolutionTree from "./EvolutionTree";
 import { capitalize } from "../helper";
 
 export default function SinglePokemon(props) {
-  let [fullData, setFullData] = useState("");
-  let [sprite, setSprite] = useState("");
-  let [render, setRender] = useState(false);
-  let [type, setType] = useState("");
-  let [size, setSize] = useState({});
+  const [fullData, setFullData] = useState("");
+  const [sprite, setSprite] = useState("");
+  const [render, setRender] = useState(false);
+  const [type, setType] = useState("");
+  const [size, setSize] = useState({});
   const [stats, setStats] = useState([]);
   const [moves, setMoves] = useState([]);
+  const [maxStat, setMaxStat] = useState(1);
 
   let id = props.match.params.id;
 
@@ -38,6 +39,8 @@ export default function SinglePokemon(props) {
 
           let stats = data.stats;
           setStats(stats);
+          let findMaxStat = Math.max(...stats.map((stat) => stat.base_stat));
+          setMaxStat(findMaxStat);
 
           let moves = data.moves;
           setMoves(moves);
@@ -80,8 +83,21 @@ export default function SinglePokemon(props) {
           <div className="stat-point-container">
             {stats.map((stat) => (
               <div>
-                <strong> {capitalize(stat.stat.name)} : </strong>
-                {stat.base_stat}
+                <span className="stat-type-title">
+                  <strong> {capitalize(stat.stat.name)} : </strong>
+                </span>
+
+                <div className="stat-type-rating-container">
+                  <span
+                    className={stat.stat.name + " " + "stat-type-rating"}
+                    style={{
+                      width: `${Math.floor((stat.base_stat / maxStat) * 100)}%`,
+                    }}
+                  >
+                    {" "}
+                    {stat.base_stat}
+                  </span>
+                </div>
               </div>
             ))}
           </div>
