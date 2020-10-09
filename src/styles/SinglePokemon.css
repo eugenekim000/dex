@@ -34,6 +34,13 @@
   width: 50%;
 }
 
+.type-container {
+  color: white;
+  padding: 5px 10px 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
 .stat-point-container > div {
   padding: 10px 20px 10px 20px;
 }

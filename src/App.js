@@ -1,5 +1,5 @@
-import React, { useReducer, useEffect, useState } from "react";
-import { Switch, Route } from "react-router-dom";
+import React, { useReducer } from "react";
+import { Switch, Route, Redirect } from "react-router-dom";
 import "./App.css";
 import CatchList from "./components/CatchList";
 import Header from "./components/Header";
@@ -13,6 +13,7 @@ let testObj = {
     "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png",
   id: 3,
   caught: false,
+  timestamp: 1,
 };
 
 const ACTIONS = {
@@ -33,7 +34,6 @@ function reducer(catchList, action) {
       let mapIdArray = catchList.map((item) => {
         if (item.id === action.payload.id) {
           let currentState = item.caught;
-          console.log(item, currentState);
           return { ...item, caught: !currentState };
         } else return item;
       });
@@ -50,6 +50,7 @@ function App() {
   return (
     <div className="App">
       <Header />
+
       <Switch>
         <Route
           path="/"
@@ -71,7 +72,7 @@ function App() {
           )}
         />
 
-        <Route component={pokemonList} />
+        <Route render={() => <Redirect to={{ pathname: "/" }} />} />
       </Switch>
     </div>
   );

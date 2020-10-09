@@ -31,9 +31,10 @@ export default function SingleGrid(props) {
   }, []);
 
   function handleClick() {
+    let timestamp = Date.now();
     dispatch({
       type: "add-catch",
-      payload: { name, sprite, id, caught: false },
+      payload: { name, sprite, id, timestamp, caught: false },
     });
   }
 

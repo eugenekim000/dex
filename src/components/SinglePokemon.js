@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Moves from "./Moves";
 import EvolutionTree from "./EvolutionTree";
-import { capitalize } from "../helper";
+import { capitalize, typeToColor } from "../helper";
 
 export default function SinglePokemon(props) {
   const [fullData, setFullData] = useState("");
@@ -58,7 +58,10 @@ export default function SinglePokemon(props) {
   return render ? (
     <div className="single-pokemon-container">
       <div className="pokedex-data-container">
-        <div className="single-sprite-container">
+        <div
+          className="single-sprite-container"
+          style={{ backgroundColor: typeToColor(type[0]) }}
+        >
           <img src={sprite}></img>
         </div>
 
@@ -67,7 +70,14 @@ export default function SinglePokemon(props) {
             {" "}
             <strong> Type: </strong>{" "}
             {type.map((item) => (
-              <span>{capitalize(item)} </span>
+              <span
+                className="type-container"
+                style={{
+                  backgroundColor: typeToColor(item),
+                }}
+              >
+                {capitalize(item)}{" "}
+              </span>
             ))}
           </div>
           <div>
