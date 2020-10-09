@@ -1,0 +1,8 @@
+.move-table-container table {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.table-row-container td {
+  border-bottom: 1px solid lightcyan;
+}

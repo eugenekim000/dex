@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Moves from "./Moves";
 import EvolutionTree from "./EvolutionTree";
+import { capitalize } from "../helper";
 
 export default function SinglePokemon(props) {
   let [fullData, setFullData] = useState("");
@@ -59,21 +60,28 @@ export default function SinglePokemon(props) {
         </div>
 
         <div className="stats-container">
-          <div>Type: {type}</div>
+          <div>
+            {" "}
+            <strong> Type: </strong>{" "}
+            {type.map((item) => (
+              <span>{capitalize(item)} </span>
+            ))}
+          </div>
           <div>
             <span>
-              <strong> Height: </strong> {size.height}
+              <strong> Height: </strong> {(size.height / 10).toFixed(1)}
               {"m"}
             </span>
             <span>
-              <strong> Weight: </strong> {size.weight}
+              <strong> Weight: </strong> {(size.weight / 10).toFixed(1)}
               {"kgs"}
             </span>
           </div>
           <div className="stat-point-container">
             {stats.map((stat) => (
               <div>
-                {stat.stat.name} : {stat.base_stat}
+                <strong> {capitalize(stat.stat.name)} : </strong>
+                {stat.base_stat}
               </div>
             ))}
           </div>

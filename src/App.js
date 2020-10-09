@@ -22,10 +22,12 @@ const ACTIONS = {
 function reducer(catchList, action) {
   switch (action.type) {
     case ACTIONS.ADD_CATCH:
+      console.log(catchList, "this is the checklist");
+      let check = catchList.filter((item) => item.id === action.payload.id);
+      if (check.length > 0) return catchList;
       return [...catchList, action.payload];
     case ACTIONS.DELETE_CATCH:
       return catchList.filter((item) => item.id !== action.payload.id);
-
     default:
       return catchList;
   }

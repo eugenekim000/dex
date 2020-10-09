@@ -1,3 +1,4 @@
+import "../styles/MovesTable.css";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -17,7 +18,6 @@ export default function MovesTable(props) {
               let cleanedObj = {};
 
               let { accuracy, power, pp, type, damage_class } = data;
-              console.log(power, "this is power");
 
               if (power === null) power = "-";
               if (accuracy === null) accuracy = "-";
@@ -45,7 +45,7 @@ export default function MovesTable(props) {
   }, [filteredMoveList]);
 
   return (
-    <div>
+    <div className="move-table-container">
       <table>
         <thead>
           <tr>
@@ -60,7 +60,7 @@ export default function MovesTable(props) {
         </thead>
         <tbody>
           {moveData.map((item) => (
-            <tr>
+            <tr className="table-row-container">
               <td>{item.level}</td>
               <td>{item.attack}</td>
               <td>{item.type}</td>

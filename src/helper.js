@@ -29,6 +29,11 @@ export const extractEvolutions = (evolutionJSON) => {
   return result;
 };
 
-function replaceHyphen(string) {
+export function replaceHyphen(string) {
   return string.split("-").join(" ");
+}
+
+export function capitalize(string) {
+  let newString = string[0].toUpperCase();
+  return newString + string.slice(1);
 }
