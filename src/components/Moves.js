@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import MovesTable from "./MovesTable";
 
 export default function Moves(props) {
   const { moves } = props;
   const [moveList, setMoveList] = useState([]);
+  const [filteredMoveList, setFilteredMoveList] = useState([]);
   const [toggleMethods, setToggleMethods] = useState("level-up");
 
   useEffect(() => {
@@ -31,6 +33,12 @@ export default function Moves(props) {
     setMoveList(selectedMoves);
   }, []);
 
+  useEffect(() => {
+    let filteredList = moveList.filter((move) => move.method === toggleMethods);
+
+    setFilteredMoveList(filteredList);
+  }, [toggleMethods, moveList]);
+
   function handleClick(e) {
     let filterMethod = e.target.value;
     setToggleMethods(filterMethod);
@@ -46,9 +54,7 @@ export default function Moves(props) {
       </button>
 
       <div>
-        {moveList
-          .filter((move) => move.method === toggleMethods)
-          .map((filteredMove) => filteredMove.attack)}
+        <MovesTable filteredMoveList={filteredMoveList} />
       </div>
     </div>
   );

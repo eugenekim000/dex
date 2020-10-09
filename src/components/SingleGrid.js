@@ -10,17 +10,20 @@ export default function SingleGrid(props) {
   const { url, name } = props.pokemon;
 
   useEffect(() => {
-    const unsubscribe = axios
+    let isMounted = true;
+    axios
       .get(url)
       .then((res) => {
         const { data } = res;
-        setSprite(data.sprites.front_default);
-        setId(data.id);
+        if (isMounted) {
+          setSprite(data.sprites.front_default);
+          setId(data.id);
+        }
       })
       .catch((error) => console.log(error));
 
     return () => {
-      unsubscribe();
+      isMounted = false;
     };
   }, []);
 
