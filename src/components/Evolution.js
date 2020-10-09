@@ -2,6 +2,7 @@ import "../styles/Evolution.css";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Loading from "../components/Loading";
 import { capitalize } from "../helper";
 
 export default function Evolution(props) {
@@ -33,7 +34,7 @@ export default function Evolution(props) {
           <div>{capitalize(evolution.name)}</div>
         </div>
       ) : (
-        "loading..."
+        <Loading />
       )}
       <div className="single-evolution-method">
         {evolution.level !== null

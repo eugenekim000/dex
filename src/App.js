@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import HomeGrid from "./components/HomeGrid";
 import SinglePokemon from "./components/SinglePokemon";
 import useStartup from "./hooks/useStartup";
+import Loading from "./components/Loading";
 
 let testObj = {
   name: "venusaur",

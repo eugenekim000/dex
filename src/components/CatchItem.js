@@ -1,5 +1,6 @@
 import "../styles/CatchItem.css";
 import React from "react";
+import { motion } from "framer-motion";
 
 export default function CatchItem(props) {
   const { item, dispatch } = props;
@@ -17,10 +18,14 @@ export default function CatchItem(props) {
 
   return (
     <div className="catch-pokemon-container">
-      <img
-        src={item.sprite}
-        className={item.caught ? "caught" : "not-caught"}
-      ></img>
+      <motion.div
+        initial={`${item.caught}`}
+        animate={`${!item.caught}`}
+        variants={variants}
+      >
+        <img src={item.sprite}></img>
+      </motion.div>
+
       <div
         className="
       catch-button-container"
@@ -35,3 +40,8 @@ export default function CatchItem(props) {
     </div>
   );
 }
+
+const variants = {
+  true: { opacity: 1 },
+  false: { opacity: 0.3 },
+};

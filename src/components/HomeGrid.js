@@ -1,13 +1,9 @@
 import "../styles/HomeGrid.css";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import SingleGrid from "./SingleGrid";
 
 const HomeGrid = (props) => {
   const { dispatch, pokemonList } = props;
-
-  useEffect(() => {
-    console.log(props, "rerender from homegrid");
-  }, []);
 
   return (
     <div className="grid-container">

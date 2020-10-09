@@ -1,6 +1,7 @@
 import "../styles/Moves.css";
 import React, { useEffect, useState } from "react";
 import MovesTable from "./MovesTable";
+import Loading from "./Loading";
 
 export default function Moves(props) {
   const { moves } = props;
@@ -67,7 +68,7 @@ export default function Moves(props) {
           <MovesTable filteredMoveList={filteredMoveList} />
         </div>
       ) : (
-        <div> loading... </div>
+        <Loading />
       )}
     </div>
   );

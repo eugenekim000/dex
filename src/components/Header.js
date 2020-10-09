@@ -14,7 +14,7 @@ export default function Header() {
       </Link>
 
       <Link to="/catch-list">
-        <img src={icon} className="pokeball-icon" />
+        <img src={icon} className="pokeball-icon" alt="catch list" />
       </Link>
     </header>
   );

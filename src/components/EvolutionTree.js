@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { extractEvolutions } from "../helper";
 import Evolution from "./Evolution";
+import Loading from "./Loading";
 
 export default function EvolutionTree(props) {
   const { id } = props;
@@ -38,7 +39,7 @@ export default function EvolutionTree(props) {
       {render ? (
         evolutionChain.map((evolution) => <Evolution evolution={evolution} />)
       ) : (
-        <div>loading...</div>
+        <Loading />
       )}
     </div>
   );

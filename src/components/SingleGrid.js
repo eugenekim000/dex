@@ -4,10 +4,12 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { ReactComponent as BookmarkLogo } from "../assets/bookmark.svg";
 import { capitalize } from "../helper";
+import icon from "../assets/pokeball-icon.png";
 
 export default function SingleGrid(props) {
   const [sprite, setSprite] = useState("");
   const [id, setId] = useState(null);
+  const [render, setRender] = useState(false);
 
   const { dispatch } = props;
   const { url, name } = props.pokemon;
@@ -21,6 +23,7 @@ export default function SingleGrid(props) {
         if (isMounted) {
           setSprite(data.sprites.front_default);
           setId(data.id);
+          setRender(true);
         }
       })
       .catch((error) => console.log(error));
@@ -40,15 +43,21 @@ export default function SingleGrid(props) {
 
   return (
     <div className="single-grid-container">
-      <Link to={id ? `pokemon/${id}` : "/"}>
-        <div className="single-pokemon-container">
-          <img src={sprite}></img>
-        </div>
-        <div>{capitalize(name) + " " + id}</div>
-      </Link>
-      <div className="bookmark-container">
-        <BookmarkLogo onClick={handleClick} />
-      </div>
+      {render ? (
+        <>
+          <Link to={id ? `pokemon/${id}` : "/"}>
+            <div className="single-pokemon-container">
+              <img src={sprite}></img>
+            </div>
+            <div>{capitalize(name) + " " + id}</div>
+          </Link>
+          <div className="bookmark-container">
+            <BookmarkLogo onClick={handleClick} />
+          </div>{" "}
+        </>
+      ) : (
+        <img src={icon} alt="loading pokemon" />
+      )}
     </div>
   );
 }

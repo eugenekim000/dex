@@ -4,6 +4,8 @@ import axios from "axios";
 import Moves from "./Moves";
 import EvolutionTree from "./EvolutionTree";
 import { capitalize, typeToColor } from "../helper";
+import { motion } from "framer-motion";
+import Loading from "./Loading";
 
 export default function SinglePokemon(props) {
   const [fullData, setFullData] = useState("");
@@ -62,7 +64,12 @@ export default function SinglePokemon(props) {
           className="single-sprite-container"
           style={{ backgroundColor: typeToColor(type[0]) }}
         >
-          <img src={sprite}></img>
+          <motion.div
+            animate={{ y: 30 }}
+            transition={{ duration: 3, yoyo: Infinity }}
+          >
+            <img src={sprite}></img>
+          </motion.div>
         </div>
 
         <div className="stats-container">
@@ -97,7 +104,12 @@ export default function SinglePokemon(props) {
                   <strong> {capitalize(stat.stat.name)} : </strong>
                 </span>
 
-                <div className="stat-type-rating-container">
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ ease: "easeOut", duration: 1.5 }}
+                  className="stat-type-rating-container"
+                >
                   <span
                     className={stat.stat.name + " " + "stat-type-rating"}
                     style={{
@@ -107,7 +119,7 @@ export default function SinglePokemon(props) {
                     {" "}
                     {stat.base_stat}
                   </span>
-                </div>
+                </motion.div>
               </div>
             ))}
           </div>
@@ -118,6 +130,6 @@ export default function SinglePokemon(props) {
       <Moves moves={moves} />
     </div>
   ) : (
-    <div>loading...</div>
+    <Loading />
   );
 }
