@@ -20,6 +20,7 @@ export default function MovesTable(props) {
               console.log(power, "this is power");
 
               if (power === null) power = "-";
+              if (accuracy === null) accuracy = "-";
 
               cleanedObj = {
                 accuracy,
@@ -32,7 +33,7 @@ export default function MovesTable(props) {
               return cleanedObj;
             });
 
-            setMoveData(cleanedRes);
+            setMoveData(cleanedRes.sort((a, b) => a.level - b.level));
           }
         })
       );
@@ -58,12 +59,6 @@ export default function MovesTable(props) {
           </tr>
         </thead>
         <tbody>
-          {/* {filteredMoveList.map((item) => (
-              <>
-                <td>{item.type}</td>
-                <td>{item.attack}</td>
-              </>
-            ))} */}
           {moveData.map((item) => (
             <tr>
               <td>{item.level}</td>
