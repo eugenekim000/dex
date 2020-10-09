@@ -38,6 +38,10 @@
   padding-top: 10px;
 }
 
+.bookmark-container:hover {
+  cursor: pointer;
+}
+
 button {
   margin: 5px 0px 5px 0px;
   border: none;
