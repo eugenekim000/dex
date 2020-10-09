@@ -1,17 +1,21 @@
 import "../styles/Header.css";
 import React from "react";
 import { Link } from "react-router-dom";
+import icon from "../assets/pokeball-icon.png";
 
 export default function Header() {
   return (
     <header className="header-container">
-      <span className="circle-container">
+      <Link to="/" className="circle-container">
         <span />
         <span />
         <span />
         <span />
-      </span>
-      <Link to="/">Home</Link> <Link to="/catch-list">Catch List</Link>
+      </Link>
+
+      <Link to="/catch-list">
+        <img src={icon} className="pokeball-icon" />
+      </Link>
     </header>
   );
 }

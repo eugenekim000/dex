@@ -1,3 +1,4 @@
+import "../styles/SinglePokemon.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Moves from "./Moves";
@@ -51,20 +52,34 @@ export default function SinglePokemon(props) {
   }, []);
 
   return render ? (
-    <div>
-      <img src={sprite}></img>
-      <div>Type: {type}</div>
-      <div>
-        <span>height: {size.height}</span>
-        <span>weight: {size.weight}</span>
-      </div>
-      <div>
-        {stats.map((stat) => (
+    <div className="single-pokemon-container">
+      <div className="pokedex-data-container">
+        <div className="single-sprite-container">
+          <img src={sprite}></img>
+        </div>
+
+        <div className="stats-container">
+          <div>Type: {type}</div>
           <div>
-            {stat.stat.name} : {stat.base_stat}
+            <span>
+              <strong> Height: </strong> {size.height}
+              {"m"}
+            </span>
+            <span>
+              <strong> Weight: </strong> {size.weight}
+              {"kgs"}
+            </span>
           </div>
-        ))}
+          <div className="stat-point-container">
+            {stats.map((stat) => (
+              <div>
+                {stat.stat.name} : {stat.base_stat}
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
+
       <EvolutionTree id={id} />
       <Moves moves={moves} />
     </div>

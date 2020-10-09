@@ -1,0 +1,41 @@
+.pokedex-data-container {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 30px;
+  padding-bottom: 40px;
+}
+
+.pokedex-data-container img {
+  transform: scale(2);
+
+  align-items: center;
+}
+
+.single-sprite-container {
+  background-color: lightgreen;
+  padding: 50px 50px 50px 50px;
+  border: 40px solid lightcyan;
+  border-radius: 10px;
+}
+
+.stats-container > div {
+  margin: 10px 0px 10px 0px;
+}
+
+.stat-point-container > div {
+  margin: 10px 0px 10px 0px;
+}
+
+@media (max-width: 600px) {
+  .single-sprite-container {
+    padding: 50px 50px 50px 50px;
+    border: 30px solid lightcyan;
+  }
+}
+
+@media (max-width: 400px) {
+  .single-sprite-container {
+    padding: 30px 30px 30px 30px;
+    border: 20px solid lightcyan;
+  }
+}

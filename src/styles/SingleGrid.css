@@ -1,12 +1,45 @@
 .single-grid-container {
   margin: 15px 10px 0px 10px;
-  box-shadow: 1px 1px 4px white;
+  background-color: ghostwhite;
+  box-shadow: 2px -3px 4px white;
+  position: relative;
 }
 
 .single-grid-container:hover {
-  box-shadow: 1px 1px 10px white;
+  box-shadow: 2px -3px 10px white;
+}
+
+.single-grid-container:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-top: 15px solid transparent;
+  border-left: 15px solid rgb(255, 48, 48);
+  width: 0;
+}
+
+.single-pokemon-container {
+  justify-content: center;
+  position: relative;
+  margin: 10px 25px 10px 25px;
+  background-color: lightcoral;
+  border: 1px solid lightcoral;
+  border-radius: 10px;
+}
+
+.single-pokemon-container img {
+  max-width: 70%;
+  height: auto;
+}
+
+.bookmark-container {
+  float: right;
+  margin-right: 10px;
+  padding-top: 10px;
 }
 
 button {
   margin: 5px 0px 5px 0px;
+  border: none;
 }

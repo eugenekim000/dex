@@ -2,6 +2,7 @@ import "../styles/SingleGrid.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { ReactComponent as BookmarkLogo } from "../assets/bookmark.svg";
 
 export default function SingleGrid(props) {
   const [sprite, setSprite] = useState("");
@@ -35,10 +36,14 @@ export default function SingleGrid(props) {
   return (
     <div className="single-grid-container">
       <Link to={id ? `pokemon/${id}` : "/"}>
-        <img src={sprite}></img>
+        <div className="single-pokemon-container">
+          <img src={sprite}></img>
+        </div>
         <div>{name + " " + id}</div>
       </Link>
-      <button onClick={handleClick}>Add to catch list</button>
+      <div className="bookmark-container">
+        <BookmarkLogo onClick={handleClick} />
+      </div>
     </div>
   );
 }

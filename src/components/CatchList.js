@@ -6,7 +6,6 @@ export default function CatchList(props) {
 
   return (
     <div>
-      this is the catch list
       {catchList.map((item) => (
         <CatchItem item={item} dispatch={dispatch} />
       ))}
